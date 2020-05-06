@@ -1,10 +1,8 @@
-name: a-manifest-name # change me
-application: yourapp # change me
+name: my-manifest # change me
+application: eks # change me
 artifacts: []
 environments:
   - name: testing # this is a fine default but you can change it
-    constraints: []
-    notifications: []
     resources:
     - kind: "ec2/security-group@v1"
       spec:
