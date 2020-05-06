@@ -1,0 +1,26 @@
+name: a-manifest-name # change me
+application: yourapp # change me
+artifacts: []
+environments:
+  - name: testing # this is a fine default but you can change it
+    constraints: []
+    notifications: []
+    resources:
+    - kind: "ec2/security-group@v1"
+      spec:
+        moniker:
+          app: "managed"
+          stack: "default"
+          detail: "helloworl-f81a"
+        locations:
+          account: "my-aws-account"
+          vpc: "eksctl-demo-fargate-cluster/VPC"
+          regions:
+          - name: "us-west-2"
+        description: "managed LoadBalancer securityGroup by ALB Ingress Controller"
+        inboundRules:
+        - protocol: "TCP"
+          portRange:
+            startPort: 80
+            endPort: 80
+          blockRange: "0.0.0.0/0"
