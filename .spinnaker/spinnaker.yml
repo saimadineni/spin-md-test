@@ -23,8 +23,3 @@ environments:
             startPort: 80
             endPort: 80
           blockRange: "0.0.0.0/0"
-        - protocol: "TCP"
-          portRange:
-            startPort: 22
-            endPort: 22
-          blockRange: "0.0.0.0/0"
