@@ -8,7 +8,7 @@ environments:
     - kind: "ec2/security-group@v1"
       spec:
         moniker:
-          app: "managed2"
+          app: "managed3"
           stack: "default"
           detail: "helloworl-f81a"
         locations:
