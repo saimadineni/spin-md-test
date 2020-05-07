@@ -1,5 +1,6 @@
 name: my-manifest # change me
 application: eks # change me
+serviceAccount: sekret-service-account@spinnaker-test.net
 artifacts: []
 environments:
   - name: testing # this is a fine default but you can change it
