@@ -16,7 +16,7 @@ environments:
           vpc: "eksctl-demo-fargate-cluster/VPC"
           regions:
           - name: "us-west-2"
-        description: "managed LoadBalancer securityGroup by ALB Ingress Controller"
+        description: "test LoadBalancer securityGroup by ALB Ingress Controller"
         inboundRules:
         - protocol: "TCP"
           portRange:
