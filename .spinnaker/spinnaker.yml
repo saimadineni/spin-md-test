@@ -9,8 +9,6 @@ environments:
       spec:
         moniker:
           app: "spinmd"
-          stack: "default"
-          detail: "helloworl-f81a"
         locations:
           account: "my-aws-account"
           vpc: "eksctl-demo-fargate-cluster/VPC"
