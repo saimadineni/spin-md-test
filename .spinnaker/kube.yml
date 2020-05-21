@@ -17,7 +17,7 @@ environments:
           annotations:
             app: spinmd
         spec:
-          replicas: 1
+          replicas: 2
           selector:
             matchLabels:
               app: hello-kubernetes
