@@ -15,7 +15,7 @@ environments:
           name: hello-kubernetes
           namespace: default
           annotations:
-            app: my-killer-app
+            app: spinmd
         spec:
           type: LoadBalancer
           externalTrafficPolicy: Cluster
