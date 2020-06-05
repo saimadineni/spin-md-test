@@ -15,7 +15,7 @@ environments:
           name: hello-kubernetes
           namespace: default
           annotations:
-            app: spinmd
+            moniker.spinnaker.io/application: spinmd
         spec:
           type: LoadBalancer
           externalTrafficPolicy: Cluster
@@ -34,7 +34,7 @@ environments:
           name: hello-kubernetes
           namespace: default
           annotations:
-            app: spinmd
+            moniker.spinnaker.io/application: spinmd
         spec:
           replicas: 2
           selector:
