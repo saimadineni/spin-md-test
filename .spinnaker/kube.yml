@@ -15,7 +15,7 @@ environments:
           name: hello-kubernetes
           namespace: default
           annotations:
-            moniker.spinnaker.io/application: random-md
+            moniker.spinnaker.io/application: spinmd
         spec:
           replicas: 1 
           selector:
