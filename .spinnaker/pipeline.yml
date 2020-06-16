@@ -5,15 +5,14 @@ artifacts: []
 environments:
   - name: testing
     resources:
-    - &service
-      kind: k8s/resource@v1
+    - kind: k8s/resource@v1
       metadata:
         account: my-k8s-account
       spec:
         apiVersion: v1
         kind: Service
         metadata:
-          name: hello-kubernetes
+          name: hello
           namespace: default
           annotations:
             moniker.spinnaker.io/application: spinmd
@@ -24,16 +23,15 @@ environments:
           - port: 80
             targetPort: 8080
           selector:
-            app: hello-kubernetes
-    - &deployment
-      kind: k8s/resource@v1
+            app: hello
+    - kind: k8s/resource@v1
       metadata:
         account: my-k8s-account
       spec:
         apiVersion: apps/v1
         kind: Deployment
         metadata:
-          name: hello-kubernetes
+          name: hello
           namespace: default
           annotations:
             moniker.spinnaker.io/application: spinmd
@@ -41,14 +39,14 @@ environments:
           replicas: 2
           selector:
             matchLabels:
-              app: hello-kubernetes
+              app: hello
           template:
             metadata:
               labels:
-                app: hello-kubernetes
+                app: hello
             spec:
               containers:
-              - name: hello-kubernetes
+              - name: hello
                 image: paulbouwer/hello-kubernetes:1.8
                 ports:
                 - containerPort: 8080
@@ -57,5 +55,48 @@ environments:
     - type: depends-on
       environment: testing
     resources:
-    - *service
-    - *deployment
+    - kind: k8s/resource@v1
+      metadata:
+        account: my-k8s-west-account
+      spec:
+        apiVersion: v1
+        kind: Service
+        metadata:
+          name: hello
+          namespace: default
+          annotations:
+            moniker.spinnaker.io/application: spinmd
+        spec:
+          type: LoadBalancer
+          externalTrafficPolicy: Cluster
+          ports:
+          - port: 80
+            targetPort: 8080
+          selector:
+            app: hello
+    - kind: k8s/resource@v1
+      metadata:
+        account: my-k8s-west-account
+      spec:
+        apiVersion: apps/v1
+        kind: Deployment
+        metadata:
+          name: hello
+          namespace: default
+          annotations:
+            moniker.spinnaker.io/application: spinmd
+        spec:
+          replicas: 2
+          selector:
+            matchLabels:
+              app: hello
+          template:
+            metadata:
+              labels:
+                app: hello
+            spec:
+              containers:
+              - name: hello
+                image: paulbouwer/hello-kubernetes:1.8
+                ports:
+                - containerPort: 8080
