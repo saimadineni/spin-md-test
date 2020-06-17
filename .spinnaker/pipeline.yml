@@ -6,6 +6,7 @@ environments:
   - name: testing
     locations:
       account: my-k8s-account
+      regions: []
     resources:
     - kind: k8s/resource@v1
       spec:
@@ -51,6 +52,7 @@ environments:
   - name: prod
     locations:
       account: my-k8s-west-account
+      regions: []
     constraints:
     - type: depends-on
       environment: testing
