@@ -4,10 +4,10 @@ serviceAccount: sekret-service-account@spinnaker-test.net
 artifacts: []
 environments:
   - name: testing
+    locations:
+      account: my-k8s-account
     resources:
     - kind: k8s/resource@v1
-      metadata:
-        account: my-k8s-account
       spec:
         apiVersion: v1
         kind: Service
@@ -25,8 +25,6 @@ environments:
           selector:
             app: hello
     - kind: k8s/resource@v1
-      metadata:
-        account: my-k8s-account
       spec:
         apiVersion: apps/v1
         kind: Deployment
@@ -51,13 +49,13 @@ environments:
                 ports:
                 - containerPort: 8080
   - name: prod
+    locations:
+      account: my-k8s-west-account
     constraints:
     - type: depends-on
       environment: testing
     resources:
     - kind: k8s/resource@v1
-      metadata:
-        account: my-k8s-west-account
       spec:
         apiVersion: v1
         kind: Service
@@ -75,8 +73,6 @@ environments:
           selector:
             app: hello
     - kind: k8s/resource@v1
-      metadata:
-        account: my-k8s-west-account
       spec:
         apiVersion: apps/v1
         kind: Deployment
