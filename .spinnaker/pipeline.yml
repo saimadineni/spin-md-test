@@ -8,12 +8,13 @@ environments:
       account: my-k8s-account
       regions: []
     resources:
-    - kind: k8s/resource@v1
+    - &service
+      kind: k8s/resource@v1
       spec:
         apiVersion: v1
         kind: Service
         metadata:
-          name: hello-testing
+          name: yollo-testing
           namespace: default
           annotations:
             moniker.spinnaker.io/application: spinmd
@@ -25,12 +26,13 @@ environments:
             targetPort: 8080
           selector:
             app: hello
-    - kind: k8s/resource@v1
+    - &deployment
+      kind: k8s/resource@v1
       spec:
         apiVersion: apps/v1
         kind: Deployment
         metadata:
-          name: hello-testing
+          name: yollo-testing
           namespace: default
           annotations:
             moniker.spinnaker.io/application: spinmd
@@ -57,44 +59,5 @@ environments:
     - type: depends-on
       environment: testing
     resources:
-    - kind: k8s/resource@v1
-      spec:
-        apiVersion: v1
-        kind: Service
-        metadata:
-          name: hello-prod
-          namespace: default
-          annotations:
-            moniker.spinnaker.io/application: spinmd
-        spec:
-          type: LoadBalancer
-          externalTrafficPolicy: Cluster
-          ports:
-          - port: 80
-            targetPort: 8080
-          selector:
-            app: hello
-    - kind: k8s/resource@v1
-      spec:
-        apiVersion: apps/v1
-        kind: Deployment
-        metadata:
-          name: hello-prod
-          namespace: default
-          annotations:
-            moniker.spinnaker.io/application: spinmd
-        spec:
-          replicas: 2
-          selector:
-            matchLabels:
-              app: hello
-          template:
-            metadata:
-              labels:
-                app: hello
-            spec:
-              containers:
-              - name: hello
-                image: paulbouwer/hello-kubernetes:1.8
-                ports:
-                - containerPort: 8080
+    - *service
+    - *deployment
