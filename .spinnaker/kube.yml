@@ -36,7 +36,7 @@ environments:
           annotations:
             moniker.spinnaker.io/application: spinmd
         spec:
-          replicas: 2
+          replicas: 3
           selector:
             matchLabels:
               app: hello-kubernetes
