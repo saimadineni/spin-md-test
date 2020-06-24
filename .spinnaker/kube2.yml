@@ -1,5 +1,5 @@
 name: my-k8s-manifest
-application: eks-k8s
+application: nimakspin
 serviceAccount: sekret-service-account@spinnaker-test.net
 artifacts: []
 environments:
@@ -15,7 +15,7 @@ environments:
           name: bye-k8s
           namespace: default
           annotations:
-            moniker.spinnaker.io/application: spinmd
+            moniker.spinnaker.io/application: nimakspin
         spec:
           type: LoadBalancer
           externalTrafficPolicy: Cluster
@@ -34,7 +34,7 @@ environments:
           name: bye-k8s
           namespace: default
           annotations:
-            moniker.spinnaker.io/application: spinmd
+            moniker.spinnaker.io/application: nimakspin
         spec:
           replicas: 3
           selector:
