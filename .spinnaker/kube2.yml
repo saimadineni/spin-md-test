@@ -36,7 +36,7 @@ environments:
           annotations:
             moniker.spinnaker.io/application: nimakspin
         spec:
-          replicas: 3
+          replicas: 2
           selector:
             matchLabels:
               app: bye-k8s
