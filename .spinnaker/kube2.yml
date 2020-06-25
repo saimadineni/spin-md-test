@@ -1,6 +1,6 @@
 name: my-k8s-manifest
 application: nimakspin
-serviceAccount: anonymous
+serviceAccount: sekret-service-account@spinnaker-test.net
 artifacts: []
 environments:
   - name: testing # this is a fine default but you can change it
