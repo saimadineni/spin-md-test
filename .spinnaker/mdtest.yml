@@ -9,6 +9,25 @@ environments:
       metadata:
         account: my-k8s-west-account
       spec:
+        apiVersion: v1
+        kind: Service
+        metadata:
+          name: hello-kubernetes
+          namespace: test
+          annotations:
+            moniker.spinnaker.io/application: nimakmd
+        spec:
+          type: LoadBalancer
+          externalTrafficPolicy: Cluster
+          ports:
+          - port: 80
+            targetPort: 8080
+          selector:
+            app: hello-kubernetes
+    - kind: k8s/resource@v1
+      metadata:
+        account: my-k8s-west-account
+      spec:
         apiVersion: apps/v1
         kind: Deployment
         metadata:
