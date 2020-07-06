@@ -38,7 +38,7 @@ environments:
           annotations:
             moniker.spinnaker.io/application: nimakspin
         spec:
-          replicas: 3
+          replicas: 1
           selector:
             matchLabels:
               app: hello-kubernetes
