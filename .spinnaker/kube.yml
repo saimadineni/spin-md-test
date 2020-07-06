@@ -1,5 +1,5 @@
 name: my-k8s-manifest # change me
-application: eks-k8s # change me
+application: nimakspin # change me
 serviceAccount: sekret-service-account@spinnaker-test.net
 hasManagedResources: true
 artifacts: []
@@ -17,7 +17,7 @@ environments:
           name: hello-kubernetes
           namespace: default
           annotations:
-            moniker.spinnaker.io/application: spinmd
+            moniker.spinnaker.io/application: nimakspin
         spec:
           type: LoadBalancer
           externalTrafficPolicy: Cluster
@@ -36,7 +36,7 @@ environments:
           name: hello-kubernetes
           namespace: default
           annotations:
-            moniker.spinnaker.io/application: spinmd
+            moniker.spinnaker.io/application: nimakspin
         spec:
           replicas: 3
           selector:
