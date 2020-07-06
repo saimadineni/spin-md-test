@@ -2,8 +2,10 @@ name: my-manifest # change me
 application: spinmd # change me
 serviceAccount: sekret-service-account@spinnaker-test.net
 artifacts: []
+hasManagedResources: true
 environments:
   - name: testing # this is a fine default but you can change it
+    hasManagedResources: true
     resources:
     - kind: "ec2/security-group@v1"
       spec:
