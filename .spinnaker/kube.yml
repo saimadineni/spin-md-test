@@ -1,11 +1,9 @@
 name: my-k8s-manifest # change me
 application: nimakspin # change me
 serviceAccount: sekret-service-account@spinnaker-test.net
-hasManagedResources: true
 artifacts: []
 environments:
   - name: testing # this is a fine default but you can change it
-    hasManagedResources: true
     resources:
     - kind: k8s/resource@v1
       metadata:
