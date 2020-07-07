@@ -1,5 +1,5 @@
 name: my-manifest # change me
-application: spinmd # change me
+application: nimakspin # change me
 serviceAccount: sekret-service-account@spinnaker-test.net
 artifacts: []
 hasManagedResources: true
@@ -10,7 +10,7 @@ environments:
     - kind: "ec2/security-group@v1"
       spec:
         moniker:
-          app: "spinmd"
+          app: "nimakspin"
         locations:
           account: "my-aws-account"
           vpc: "eksctl-demo-fargate-cluster/VPC"
