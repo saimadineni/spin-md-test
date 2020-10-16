@@ -7,7 +7,7 @@ environments:
     resources:
     - kind: k8s/resource@v1
       metadata:
-        account: my-k8s-west-account
+        account: my-k8s-account
       spec:
         apiVersion: v1
         kind: Service
@@ -26,7 +26,7 @@ environments:
             app: hello-kubernetes
     - kind: k8s/resource@v1
       metadata:
-        account: my-k8s-west-account
+        account: my-k8s-account
       spec:
         apiVersion: apps/v1
         kind: Deployment
