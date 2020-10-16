@@ -12,7 +12,7 @@ environments:
         apiVersion: v1
         kind: Service
         metadata:
-          name: hello-kubernetes
+          name: hello-kubernetes1
           namespace: default
           annotations:
             moniker.spinnaker.io/application: nimakspin
