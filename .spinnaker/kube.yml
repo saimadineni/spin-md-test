@@ -5,7 +5,7 @@ artifacts: []
 environments:
   - name: testing
     locations:
-      account: my-k8s-account
+      account: my-k8s-west-account
       regions: []
     resources:
     - &service
