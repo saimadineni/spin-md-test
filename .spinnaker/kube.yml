@@ -5,7 +5,7 @@ artifacts: []
 environments:
   - name: testing
     locations:
-      account: my-k8s-west-account
+      account: my-k8s-account
       regions: []
     resources:
     - &service
@@ -37,7 +37,7 @@ environments:
           annotations:
             moniker.spinnaker.io/application: nimakspin
         spec:
-          replicas: 2
+          replicas: 1
           selector:
             matchLabels:
               app: hello
