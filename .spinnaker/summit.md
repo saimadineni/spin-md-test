@@ -1,0 +1,53 @@
+name: my-k8s-manifest 
+application: nimakspin
+serviceAccount: sekret-service-account@spinnaker-test.net
+artifacts: []
+environments:
+  - name: testing
+    locations:
+      account: my-k8s-account
+      regions: []
+    resources:
+    - &service
+      kind: k8s/resource@v1
+      spec:
+        apiVersion: v1
+        kind: Service
+        metadata:
+          name: spin-summit
+          namespace: default
+          annotations:
+            moniker.spinnaker.io/application: nimakspin
+        spec:
+          type: LoadBalancer
+          externalTrafficPolicy: Cluster
+          ports:
+          - port: 80
+            targetPort: 8080
+          selector:
+            app: hello
+    - &deployment
+      kind: k8s/resource@v1
+      spec:
+        apiVersion: apps/v1
+        kind: Deployment
+        metadata:
+          name: spin-summit
+          namespace: default
+          annotations:
+            moniker.spinnaker.io/application: nimakspin
+        spec:
+          replicas: 1
+          selector:
+            matchLabels:
+              app: hello
+          template:
+            metadata:
+              labels:
+                app: hello
+            spec:
+              containers:
+              - name: hello
+                image: paulbouwer/hello-kubernetes:1.8
+                ports:
+                - containerPort: 8080
