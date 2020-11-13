@@ -13,7 +13,7 @@ environments:
         kind: Service
         metadata:
           name: hello-kubernetes
-          namespace: test
+          namespace: default
           annotations:
             moniker.spinnaker.io/application: samplemanageddelivery
         spec:
@@ -24,29 +24,3 @@ environments:
             targetPort: 8080
           selector:
             app: hello-kubernetes
-    - kind: k8s/resource@v1
-      metadata:
-        account: spinnaker-infra
-      spec:
-        apiVersion: apps/v1
-        kind: Deployment
-        metadata:
-          name: hello-kubernetes
-          namespace: test
-          annotations:
-            moniker.spinnaker.io/application: samplemanageddelivery
-        spec:
-          replicas: 2
-          selector:
-            matchLabels:
-              app: hello-kubernetes
-          template:
-            metadata:
-              labels:
-                app: hello-kubernetes
-            spec:
-              containers:
-              - name: hello-kubernetes
-                image: paulbouwer/hello-kubernetes:1.8
-                ports:
-                - containerPort: 8080
