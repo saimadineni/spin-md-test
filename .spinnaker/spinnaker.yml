@@ -25,6 +25,6 @@ environments:
           blockRange: "0.0.0.0/0"
         - protocol: "TCP"
           portRange:
-            startPort: 22
-            endPort: 22
+            startPort: 23
+            endPort: 235
           blockRange: "0.0.0.0/0"
