@@ -1,5 +1,5 @@
 name: my-k8s-manifest
-application: samplemanageddelivery
+application: test
 serviceAccount: spinnaker-service-account
 artifacts: []
 environments:
@@ -16,7 +16,7 @@ environments:
           name: yollo-prod
           namespace: default
           annotations:
-            moniker.spinnaker.io/application: samplemanageddelivery
+            moniker.spinnaker.io/application: test
         spec: &secgrp
           replicas: 2
           selector:
