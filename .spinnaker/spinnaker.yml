@@ -13,9 +13,9 @@ environments:
           app: "samplemanageddelivery"
         locations:
           account: "my-aws-account"
-          vpc: "vpc-0db31c78c2295dc00"
+          vpc: "EKS-VPC"
           regions:
-          - name: "us-east-1"
+          - name: "us-west-2"
         description: "test LoadBalancer securityGroup by ALB Ingress Controller"
         inboundRules:
         - protocol: "TCP"
