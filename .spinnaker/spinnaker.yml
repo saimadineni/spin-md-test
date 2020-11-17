@@ -11,6 +11,11 @@ environments:
       spec:
         moniker:
           app: "samplemanageddelivery"
+        locations:
+          account: "my-aws-account"
+          vpc: "codeops-vpc"
+          regions:
+          - name: "us-east-1"
         description: "test LoadBalancer securityGroup by ALB Ingress Controller"
         inboundRules:
         - protocol: "TCP"
