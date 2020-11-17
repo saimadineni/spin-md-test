@@ -2,20 +2,13 @@ name: my-k8s-manifest
 application: samplemanageddelivery
 serviceAccount: spinnaker-service-account
 artifacts: []
-hasManagedResources: true
 environments:
-  - name: testing # this is a fine default but you can change it
-    hasManagedResources: true
-    resources:
+  - name: testing # this is a fine default but you can change it    resources:
     - kind: k8s/resource@v1
       metadata:
         account: spinnaker-infra
-        region: us-east-1
       spec:
         moniker:
-          app: "samplemanageddelivery"
-        locations:
-          account: "spinnaker-infra"
         apiVersion: v1
         kind: Service
         metadata:
@@ -31,3 +24,29 @@ environments:
             targetPort: 8080
           selector:
             app: hello-kubernetes
+    - kind: k8s/resource@v1
+      metadata:
+        account: spinnaker-infra
+      spec:
+        apiVersion: apps/v1
+        kind: Deployment
+        metadata:
+          name: hello-kubernetes
+          namespace: test
+          annotations:
+            moniker.spinnaker.io/application: samplemanageddelivery
+        spec:
+          replicas: 2
+          selector:
+            matchLabels:
+              app: hello-kubernetes
+          template:
+            metadata:
+              labels:
+                app: hello-kubernetes
+            spec:
+              containers:
+              - name: hello-kubernetes
+                image: paulbouwer/hello-kubernetes:1.8
+                ports:
+                - containerPort: 8080
