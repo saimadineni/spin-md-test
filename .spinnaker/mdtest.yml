@@ -2,13 +2,19 @@ name: my-k8s-manifest
 application: samplemanageddelivery
 serviceAccount: spinnaker-service-account
 artifacts: []
+hasManagedResources: true
 environments:
   - name: testing # this is a fine default but you can change it
+    hasManagedResources: true
     resources:
     - kind: k8s/resource@v1
       metadata:
         account: spinnaker-infra
       spec:
+        moniker:
+          app: "samplemanageddelivery"
+        locations:
+          account: "spinnaker-infra"
         apiVersion: v1
         kind: Service
         metadata:
