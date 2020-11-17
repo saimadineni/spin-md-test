@@ -10,6 +10,7 @@ environments:
     - kind: k8s/resource@v1
       metadata:
         account: spinnaker-infra
+        region: us-east-1
       spec:
         moniker:
           app: "samplemanageddelivery"
