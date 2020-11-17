@@ -13,7 +13,7 @@ environments:
           app: "samplemanageddelivery"
         locations:
           account: "my-aws-account"
-          vpc: "eksctl-spin-six-cluster/VPC"
+          vpc: "vpc-0db31c78c2295dc00"
           regions:
           - name: "us-east-1"
         description: "test LoadBalancer securityGroup by ALB Ingress Controller"
